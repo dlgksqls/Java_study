@@ -1,40 +1,37 @@
 package chap_08;
 
+import chap_08.Detector.AdvancedFireDetector;
+import chap_08.Detector.FireDetector;
+import chap_08.Detector.detectable;
 import chap_08.camera.FactoryCam;
-import chap_08.detector.AdvancedFireDetector;
-import chap_08.detector.Detectable;
-import chap_08.detector.FireDetector;
-import chap_08.reporter.NormalReporter;
-import chap_08.reporter.ViedoReporter;
+import chap_08.repoter.NomalReporter;
+import chap_08.repoter.Reportable;
+import chap_08.repoter.VideoReporter;
 
 public class _02_Interface {
     public static void main(String[] args) {
         // 인터페이스
-        NormalReporter normalReporter = new NormalReporter();
-        normalReporter.report();
+        NomalReporter r1 = new NomalReporter();
+        r1.report();
 
-        ViedoReporter viedoReporter = new ViedoReporter();
-        viedoReporter.report();
+        VideoReporter r2 = new VideoReporter();
+        r2.report();
 
-        Detectable fireDetector = new FireDetector();
-        fireDetector.detect();
+        Reportable r3 = new VideoReporter();
+        r3.report();
 
-        Detectable advancedFireDetector = new AdvancedFireDetector();
-        advancedFireDetector.detect();
+        detectable d1 = new FireDetector();
+        d1.detect();
+        detectable d2 = new AdvancedFireDetector();
+        d2.detect();
 
-        System.out.println("-------------------------------");
+        System.out.println("-----------------------");
 
-        FactoryCam factoryCam = new FactoryCam();
-        factoryCam.setDetector(fireDetector);
-        factoryCam.setReporter(normalReporter);
+        FactoryCam fact = new FactoryCam();
+        fact.setDetector(d2);
+        fact.setReporter(r1);
 
-        fireDetector.detect();
-        normalReporter.report();
-
-        factoryCam.setDetector(advancedFireDetector);
-        factoryCam.setReporter(viedoReporter);
-
-        advancedFireDetector.detect();
-        viedoReporter.report();
+        fact.detect();
+        fact.report();
     }
 }

@@ -1,17 +1,16 @@
 package chap_08.camera;
 
-import chap_08.detector.Detectable;
-import chap_08.reporter.Reportable;
+import chap_08.Detector.detectable;
+import chap_08.repoter.Reportable;
 
-public class FactoryCam extends Camera implements Detectable, Reportable {
-    private Detectable detector;
+public class FactoryCam extends camera implements detectable, Reportable {
+    private detectable detector;
     private Reportable reporter;
 
-    public void setDetector(Detectable detector) {
+    public void setDetector(detectable detector) {
         this.detector = detector;
     }
-
-    public void setReporter(Reportable reporter) {
+    public void setReporter(Reportable reporter){
         this.reporter = reporter;
     }
 
