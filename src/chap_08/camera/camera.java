@@ -1,7 +1,5 @@
 package chap_08.camera;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 public abstract class camera {
     public void takePicture(){
         System.out.println("사진 촬영");
