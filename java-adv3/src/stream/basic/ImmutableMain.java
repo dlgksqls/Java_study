@@ -1,4 +1,4 @@
-package stream;
+package stream.basic;
 
 import java.util.List;
 

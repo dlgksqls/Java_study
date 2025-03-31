@@ -1,4 +1,4 @@
-package stream;
+package stream.basic;
 
 import lambda.lambda5.mystream.MyStreamV3;
 

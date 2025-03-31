@@ -1,10 +1,10 @@
-package stream;
+package stream.basic;
 
 import lambda.lambda5.mystream.MyStreamV3;
 
 import java.util.List;
 
-public class LazyEvalMain2 {
+public class LazyEvalMain1 {
 
     public static void main(String[] args) {
         List<Integer> data = List.of(1, 2, 3, 4, 5, 6);
@@ -15,7 +15,7 @@ public class LazyEvalMain2 {
 
     private static void ex1(List<Integer> data) {
         System.out.println("=== MyStreamV3 시작 ===");
-        MyStreamV3.of(data)
+        List<Integer> result = MyStreamV3.of(data)
                 .filter(i -> {
                     boolean isEven = i % 2 == 0;
                     System.out.println("filter() 실행 : " + i + "(" + isEven + ")");
@@ -25,12 +25,15 @@ public class LazyEvalMain2 {
                     int mapped = i * 10;
                     System.out.println("map() 실행 : " + i + " -> " + mapped);
                     return mapped;
-                });
+                })
+                .toList();
+
+        System.out.println("result = " + result);
     }
 
     private static void ex2(List<Integer> data) {
         System.out.println("=== Stream API 시작 ===");
-        data.stream() // 최종연산 ex) toList()이 호출되지 않으면 아무일도 하지 않음 => 지연 연산
+        List<Integer> result = data.stream()
                 .filter(i -> {
                             boolean isEven = i % 2 == 0;
                             System.out.println("filter() 실행 : " + i + "(" + isEven + ")");
@@ -41,6 +44,9 @@ public class LazyEvalMain2 {
                     int mapped = i * 10;
                     System.out.println("map() 실행 : " + i + " -> " + mapped);
                     return mapped;
-                });
+                })
+                .toList();
+
+        System.out.println("result = " + result);
     }
 }
